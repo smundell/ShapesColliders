@@ -29,9 +29,10 @@ public class ShapesCollider : MonoBehaviour
         UpdateData();
     }
 
-    protected virtual void UpdateData()
+    public virtual void UpdateData()
     {
         if (poly == null) { return; }
+        Refresh();
     }
 
     protected virtual void Refresh()

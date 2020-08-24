@@ -24,13 +24,13 @@ public class ShapesTriangleCollider : ShapesCollider
             UpdateData();
     }
 
-    protected override void UpdateData()
+    public override void UpdateData()
     {
         if (poly == null) { return; }
 
-        A = new Vector3(triangle.A.x, triangle.A.y);
-        B = new Vector3(triangle.B.x, triangle.B.y);
-        C = new Vector3(triangle.C.x, triangle.C.y);
+        A = new Vector2(triangle.A.x, triangle.A.y);
+        B = new Vector2(triangle.B.x, triangle.B.y);
+        C = new Vector2(triangle.C.x, triangle.C.y);
         Refresh();
     }
 

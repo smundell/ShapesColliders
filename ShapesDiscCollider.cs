@@ -27,7 +27,7 @@ public class ShapesDiscCollider : ShapesCollider
             UpdateData();
     }
 
-    protected override void UpdateData()
+    public override void UpdateData()
     {
         if(poly == null) { return; }
 
@@ -39,7 +39,7 @@ public class ShapesDiscCollider : ShapesCollider
         Refresh(type, radius, thiccness, angRadStart, angRadEnd);
     }
 
-    void Refresh(DiscType _type, float _radius, float _thiccness, float _angRadStart, float _angRadEnd)
+    protected void Refresh(DiscType _type, float _radius, float _thiccness, float _angRadStart, float _angRadEnd)
     {
         points.Clear();
 
