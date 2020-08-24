@@ -6,40 +6,28 @@ using Shapes;
 [ExecuteInEditMode]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Disc))]
-public class ShapesDiscCollider : MonoBehaviour
+public class ShapesDiscCollider : ShapesCollider
 {
-    public bool drawGizmos = false;
-    [Range(0.01f, 1)] public float qualityLevel = 0.2f;
-
     Disc ring;
-    PolygonCollider2D poly;
 
     DiscType type;
     float radius;
     float thiccness;
     float angRadStart;
     float angRadEnd;
-    List<Vector2> points;
 
     private void Start()
     {
         ring = GetComponent<Disc>();
-        poly = GetComponent<PolygonCollider2D>();
-        points = new List<Vector2>();
     }
 
-    private void Update()
+    public override void Update()
     {
         if (type != ring.Type || radius != ring.Radius || thiccness != ring.Thickness || angRadStart != ring.AngRadiansStart || angRadEnd != ring.AngRadiansEnd)
             UpdateData();
     }
 
-    public void OnValidate()
-    {
-        UpdateData();
-    }
-
-    void UpdateData()
+    protected override void UpdateData()
     {
         if(poly == null) { return; }
 
@@ -110,24 +98,5 @@ public class ShapesDiscCollider : MonoBehaviour
             points.Reverse();
 
         return points;
-    }
-
-    public void OnDrawGizmos()
-    {
-        if(poly == null || !drawGizmos) { return; }
-        PolylinePath path = new PolylinePath();
-        float scale = Mathf.Clamp(0.03f * qualityLevel, 0.02f, 1);
-        foreach (Vector2 point in poly.points)
-        {
-            Vector2 adjustedPoint = point;
-            adjustedPoint = ShapesMath.Rotate(adjustedPoint, transform.eulerAngles.z * Mathf.Deg2Rad);
-            adjustedPoint *= transform.lossyScale.x;
-            adjustedPoint += (Vector2)transform.position;
-
-            Draw.Ring(adjustedPoint, scale, scale, Color.red);
-            path.AddPoints(adjustedPoint);
-        }
-
-        Draw.Polyline(path, true, scale/2, Color.red);
     }
 }
