@@ -9,6 +9,9 @@ public class ShapesCollider : MonoBehaviour
 {
     public bool drawGizmos = false;
     [Range(0.01f, 1)] public float qualityLevel = 0.2f;
+    [Range(0.01f, 0.1f)] public float gizmoScale = 0.04f;
+    public Color vertexColor = Color.green;
+    public Color lineColor = Color.green;
 
     protected PolygonCollider2D poly;
     protected List<Vector2> points;
@@ -46,18 +49,21 @@ public class ShapesCollider : MonoBehaviour
     {
         if (poly == null || !drawGizmos) { return; }
         PolylinePath path = new PolylinePath();
-        float scale = Mathf.Clamp(0.03f * qualityLevel, 0.02f, 1);
-        foreach (Vector2 point in poly.points)
-        {
-            Vector2 adjustedPoint = point;
-            adjustedPoint = ShapesMath.Rotate(adjustedPoint, transform.eulerAngles.z * Mathf.Deg2Rad);
-            adjustedPoint *= transform.lossyScale.x;
-            adjustedPoint += (Vector2)transform.position;
 
-            Draw.Ring(adjustedPoint, scale, scale, Color.red);
-            path.AddPoints(adjustedPoint);
+        for (int i = 0; i < poly.points.Length; i++)
+        {
+            Vector2 point = poly.points[i];
+            point = ShapesMath.Rotate(point, transform.eulerAngles.z * Mathf.Deg2Rad);
+            point *= transform.lossyScale.x;
+            point += (Vector2)transform.position;
+            path.AddPoints(point);
         }
 
-        Draw.Polyline(path, true, scale / 2, Color.red);
+        Draw.Polyline(path, true, gizmoScale / 4, lineColor);
+
+        for (int i = 0; i < path.Count; i++)
+        {
+            Draw.Rectangle(path[i].point, gizmoScale, gizmoScale, vertexColor);
+        }
     }
 }
