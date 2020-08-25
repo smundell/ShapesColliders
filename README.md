@@ -5,6 +5,7 @@ A collider library for Freya Holmér's Shapes
 
 Supports
 * Types: Disc, Triangle, Polygon
+* Adjustable quality level
 * Flexble & Fixed vertex count
 
 Limitations
