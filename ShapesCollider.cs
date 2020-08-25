@@ -7,11 +7,14 @@ using Shapes;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class ShapesCollider : MonoBehaviour
 {
+    [Header("Gizmo Properties")]
     public bool drawGizmos = false;
-    [Range(0.01f, 1)] public float qualityLevel = 0.2f;
     [Range(0.01f, 0.1f)] public float gizmoScale = 0.04f;
-    public Color vertexColor = Color.green;
+    public Color pointColor = Color.green;
     public Color lineColor = Color.green;
+
+    [Header("Collider Properties")]
+    [Range(0.01f, 1)] public float qualityLevel = 0.2f;
 
     protected PolygonCollider2D poly;
     protected List<Vector2> points;
@@ -50,13 +53,9 @@ public class ShapesCollider : MonoBehaviour
         if (poly == null || !drawGizmos) { return; }
         PolylinePath path = new PolylinePath();
 
-        for (int i = 0; i < poly.points.Length; i++)
+        foreach (Vector2 v in poly.points)
         {
-            Vector2 point = poly.points[i];
-            point = ShapesMath.Rotate(point, transform.eulerAngles.z * Mathf.Deg2Rad);
-            point *= transform.lossyScale.x;
-            point += (Vector2)transform.position;
-            path.AddPoints(point);
+            path.AddPoints(poly.transform.TransformPoint(v));
         }
 
         Draw.Polyline(path, true, gizmoScale / 4, lineColor);
