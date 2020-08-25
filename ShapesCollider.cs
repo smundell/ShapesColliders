@@ -62,7 +62,7 @@ public class ShapesCollider : MonoBehaviour
 
         for (int i = 0; i < path.Count; i++)
         {
-            Draw.Rectangle(path[i].point, gizmoScale, gizmoScale, vertexColor);
+            Draw.Rectangle(path[i].point, gizmoScale, gizmoScale, lineColor);
         }
     }
 }
