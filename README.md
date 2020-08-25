@@ -1,6 +1,8 @@
 # ShapesColliders
 A collider library for Freya Holmér's Shapes
 
+![alt text](https://github.com/smundell/ShapesColliders/blob/master/Shapes%20Colliders.PNG)
+
 Supports
 * Types: Disc, Triangle, Polygon
 * Flexble & Fixed vertex count
