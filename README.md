@@ -1,5 +1,5 @@
 # ShapesColliders
-A collider library for Freya Holmér's Shapes
+A collider library for Freya Holmér's 'Shapes' vector drawing asset.
 
 ![alt text](https://github.com/smundell/ShapesColliders/blob/master/Shapes%20Colliders.PNG)
 
