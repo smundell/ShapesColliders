@@ -23,7 +23,7 @@ public class ShapesLineCollider : ShapesCollider
         line = GetComponent<Line>();
     }
 
-    public override void Update()
+    public void Update()
     {
         if (start != line.Start || end != line.End || thickness != line.Thickness)
             UpdateData();

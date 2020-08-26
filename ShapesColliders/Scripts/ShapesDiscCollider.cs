@@ -30,7 +30,7 @@ public class ShapesDiscCollider : ShapesCollider
         disc = GetComponent<Disc>();
     }
 
-    public override void Update()
+    public void Update()
     {
         // Recalc on variable changes
         // Would be good to have some type of OnValidate event for shapes

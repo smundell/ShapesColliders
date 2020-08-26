@@ -51,19 +51,30 @@ public class ShapesPolylineCollider : ShapesCollider
         for (int i = 0; i < polyPoints.Count; i++)
         {
             Vector2 result = polyPoints[i].point;
-            if (i == 0)
+            if (i == 0 & !closed)
             {
                 result = GetPoint(polyPoints[i].point, polyPoints[i].point, polyPoints[i + 1].point, _thickness * polyPoints[i].thickness);
             }
-            else if (i == polyPoints.Count-1)
+            else if (i == polyPoints.Count-1 & !closed)
             {
                 result = GetPoint(polyPoints[i].point, polyPoints[i-1].point, polyPoints[i].point, _thickness * polyPoints[i].thickness);
             }
             else
             {
-                Vector2 p1 = polyPoints[i - 1].point;
-                Vector2 p2 = polyPoints[i].point;
-                Vector2 p3 = polyPoints[i + 1].point;
+                Vector2 p1, p2, p3;
+                if (!closed)
+                {
+                    p1 = polyPoints[i - 1].point;
+                    p2 = polyPoints[i].point;
+                    p3 = polyPoints[i + 1].point;
+                }
+                else
+                {
+                    reverseDrawOrder = false;
+                    p1 = polyPoints[i == 0 ? polyPoints.Count-1 : i - 1].point;
+                    p2 = polyPoints[i].point;
+                    p3 = polyPoints[i == polyPoints.Count - 1 ? 0 : i + 1].point;
+                }
 
                 Vector2 p12 = (p2 - p1).normalized;
                 Vector2 n12 = new Vector2(-p12.y, p12.x);

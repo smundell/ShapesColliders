@@ -25,11 +25,6 @@ public class ShapesCollider : MonoBehaviour
         points = new List<Vector2>();
     }
 
-    public virtual void Update()
-    {
-        
-    }
-
     public void OnValidate()
     {
         UpdateData();
@@ -44,7 +39,7 @@ public class ShapesCollider : MonoBehaviour
     protected virtual void Refresh()
     {
         points.Clear();
-
+		// Set points here
         poly.points = points.ToArray();
     }
 

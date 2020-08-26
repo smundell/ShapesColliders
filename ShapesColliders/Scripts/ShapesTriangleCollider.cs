@@ -18,7 +18,7 @@ public class ShapesTriangleCollider : ShapesCollider
         triangle = GetComponent<Triangle>();
     }
 
-    public override void Update()
+    public void Update()
     {
         if (A != triangle.A || B != triangle.B || C != triangle.C)
             UpdateData();
