@@ -1,7 +1,7 @@
 # ShapesColliders
 A collider library for Freya Holmér's 'Shapes' vector drawing asset.
 
-![alt text](https://github.com/smundell/ShapesColliders/blob/master/Shapes%20Colliders.PNG)
+![alt text](https://github.com/smundell/ShapesColliders/blob/master/Colliders.PNG)
 
 Supports
 * Types: Disc, Triangle, Polygon, Lines & Polylines
