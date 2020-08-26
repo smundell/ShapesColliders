@@ -1,5 +1,5 @@
 # ShapesColliders
-A collider library for Freya Holmér's 'Shapes' vector drawing asset.
+A collider library for [Freya Holmér's](https://twitter.com/FreyaHolmer) '[Shapes](https://acegikmo.com/shapes/)' vector drawing asset on the Unity [Asset Store](https://assetstore.unity.com/packages/tools/particles-effects/shapes-173167).
 
 ![alt text](https://github.com/smundell/ShapesColliders/blob/master/Colliders.PNG)
 
