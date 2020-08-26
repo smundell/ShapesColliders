@@ -10,7 +10,7 @@ public class ShapesCollider : MonoBehaviour
     [Header("Gizmo Properties")]
     public bool drawGizmos = false;
     [Range(0.01f, 0.1f)] public float gizmoScale = 0.04f;
-    public Color pointColor = Color.green;
+    public Color pointColor = Color.red;
     public Color lineColor = Color.green;
 
     [Header("Collider Properties")]
@@ -27,7 +27,7 @@ public class ShapesCollider : MonoBehaviour
 
     public virtual void Update()
     {
-
+        
     }
 
     public void OnValidate()
@@ -62,7 +62,7 @@ public class ShapesCollider : MonoBehaviour
 
         for (int i = 0; i < path.Count; i++)
         {
-            Draw.Rectangle(path[i].point, gizmoScale, gizmoScale, lineColor);
+            Draw.Rectangle(path[i].point, gizmoScale, gizmoScale, pointColor);
         }
     }
 }
