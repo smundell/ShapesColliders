@@ -17,7 +17,7 @@ public class ShapesPolygonCollider : ShapesCollider
 
     protected override void Refresh()
     {
-        poly.points = pol.PolyPoints.ToArray();
+        poly.points = pol.points.ToArray();
     }
 
     private void OnDrawGizmosSelected()
