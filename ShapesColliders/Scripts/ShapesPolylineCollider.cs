@@ -34,8 +34,8 @@ public class ShapesPolylineCollider : ShapesCollider
     protected override void Refresh()
     {
         points.Clear();
-        points.AddRange(DrawLine(polyLine.PolyPoints, thickness / 2, closed));
-        points.AddRange(DrawLine(polyLine.PolyPoints, -(thickness / 2), closed, true));
+        points.AddRange(DrawLine(polyLine.points, thickness / 2, closed));
+        points.AddRange(DrawLine(polyLine.points, -(thickness / 2), closed, true));
         poly.points = points.ToArray();
     }
 
